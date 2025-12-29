@@ -35,7 +35,7 @@ export default function page() {
               />
             </div>
 
-            SUBMIT BUTTON
+            {/* SUBMIT BUTTON */}
 
             <div className='w-sm pt-8'>
               <button className='text-center bg-red-500 w-full hover:cursor-pointer hover:scale-105 transition-transform rounded-md p-2 text-white'>Send Message</button>

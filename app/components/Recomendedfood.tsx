@@ -1,6 +1,9 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import {motion} from "framer-motion"
 
 export default function Recomendedfood() {
 
@@ -15,6 +18,18 @@ export default function Recomendedfood() {
 
     return (
         <main className=' flex  items-center w-full flex-col bg-black min-h-screen pt-10'>
+
+                <motion.section
+                className='flex flex-col items-center'
+                initial={{opacity:0 , y:40}}
+                whileInView={{opacity:1 , y:0}}
+                viewport={{once:true}}
+                transition={{duration:0.6 , delay:0.1
+
+                    
+                }}
+                >
+                     
             <section>
                 <p className='text-white text-center text-[50px] font-bold'>Recommended <span className='text-red-500'>Cuisines</span></p>
             </section>
@@ -55,6 +70,8 @@ export default function Recomendedfood() {
                 
             </section>
   
+                </motion.section>
+           
 
         </main>
     )
