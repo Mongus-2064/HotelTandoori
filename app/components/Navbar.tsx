@@ -10,12 +10,12 @@ export default function Navbar() {
         { label: "Home", href: "/" ,id:"1" },
         { label: "Menu", href: "/Menu",id:"2" },
         { label: "About", href: "/About",id:"3" },
-        {label:"Contact" , href:"/contact",id:"4"}
+        {label:"Contact" , href:"/Contact",id:"4"}
     ]
 
     return (
 
-        <main className='bg-black flex justify-between border border-b-white backdrop-blur-lg lg:px-8 px-4 fixed z-10 w-full  items-center gap-2 '>
+        <main className='bg-black flex justify-between border-b border-white backdrop-blur-lg lg:px-8 px-4 fixed z-10 w-full  items-center gap-2 '>
             <section className=' p-2 flex items-center'>
                 <Image
                     src={logo}
@@ -39,7 +39,7 @@ export default function Navbar() {
             ))}
             </section>
             <section className='lg:flex hidden gap-4 items-center'>
-                <Link className='rounded-md border hover:border-white hover:bg-white hover:text-black hover:scale-105 duration-300  text-white px-10 py-2' href="/login">Login</Link>
+                <Link className='rounded-md border hover:border-white hover:bg-white hover:text-black hover:scale-105 duration-300  text-white px-10 py-2' href="/auth/login">Login</Link>
                 <Link
                     className='
                 hover:scale-105 hover:bg-transparent transition-transform duration-300 hover:text-red-500  

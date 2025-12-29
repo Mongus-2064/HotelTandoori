@@ -7,10 +7,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [{
       hostname: "images.stockcake.com"
     },
-    { hostname: "www.beyultreks.com" },
+    { hostname: "img.freepik.com" },
 
-    { hostname: "static.india.com" },
-    { hostname: "i.ytimg.com" }
+    { hostname: "www.beyultreks.com" },
+    { hostname: "i.ytimg.com" },
+    {hostname : "static.india.com"}
     ]
   }
 };
