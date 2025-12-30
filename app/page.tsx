@@ -14,7 +14,7 @@ export default function page() {
 <HeroSection/>
 <Recomendedfood/>
 <Experience/>
-<Footer/>
+    <Footer/>
 
       
     </main>

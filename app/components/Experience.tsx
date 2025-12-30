@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { CircleArrowRight } from 'lucide-react'
+import Footer from './Footer'
 
 export default function Experience() {
   return (
@@ -23,6 +24,7 @@ export default function Experience() {
 
             <Link href="/signup" className='flex font-bold justify-center  w-[75%] bg-red-600 p-2 mt-8 text-[24px] gap-4 items-center rounded-md text-white text-center hover:bg-transparent border border-red-600 hover:text-red-600 hover:scale-105 transition-transform duration-300' >Join us Today <CircleArrowRight size={24}/></Link>
         </section>
+
     </main>
   )
 }

@@ -1,10 +1,16 @@
+"use client"
+
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "@/images/images-copy2.png"
 import Maxwidthwrapper from '@/Layout/Maxwidthwrapper'
 import Link from 'next/link'
+import { Cross, HamburgerIcon, Menu, SquareX } from 'lucide-react'
+import Mobilemenu from './Hamburgermenu'
 
 export default function Navbar() {
+
+    const [isopen , setIsOpen] =useState(false)
 
     const navlinks = [
         { label: "Home", href: "/" ,id:"1" },
@@ -15,15 +21,16 @@ export default function Navbar() {
 
     return (
 
-        <main className='bg-black flex justify-between border-b border-white backdrop-blur-lg lg:px-8 px-4 fixed z-10 w-full  items-center gap-2 '>
-            <section className=' p-2 flex items-center'>
+        <main className='bg-black/40  flex  justify-between items-center flex-col lg:flex-row border-b border-white backdrop-blur-lg lg:px-8 px-2 fixed z-10 w-full   gap-2 '>
+            <section className=' flex flex-row items-center justify-between w-full'>
+      <section className=' p-2 flex items-center '>
                 <Image
                     src={logo}
                     alt='logo'
-                    width={56}
+                    width={48}
                     height={48}
                 />
-                <p className='logo text-red-500 text-[40px]'>Tandoori</p>
+                <p className='logo text-red-500 text-[32px] text-center lg:text-[40px]'>Tandoori</p>
             </section>
             <section className=' lg:flex hidden gap-4 text-[18px] text-gray-400'>
 
@@ -38,14 +45,37 @@ export default function Navbar() {
                 </div>
             ))}
             </section>
+            {/* HAMBURGER ICON  */}
+
+             
+                <div 
+            onClick={()=> setIsOpen(!isopen)}
+            className='lg:hidden inline'>
+                {isopen ? <SquareX className='text-white' size={24}/> : <Menu className='text-white' size={24}/>}
+            </div>
+
+
             <section className='lg:flex hidden gap-4 items-center'>
                 <Link className='rounded-md border hover:border-white hover:bg-white hover:text-black hover:scale-105 duration-300  text-white px-10 py-2' href="/auth/login">Login</Link>
                 <Link
                     className='
                 hover:scale-105 hover:bg-transparent transition-transform duration-300 hover:text-red-500  
                 rounded-md border border-red-500 bg-red-600 text-white px-10 py-2'
-                    href="/signup">Signup</Link>
+                    href="/auth/signup">Signup</Link>
+
+
             </section>
+            
+            </section>
+            <div className='lg:hidden self-center w-full flex justify-center items-center  '>
+           {isopen ? <Mobilemenu/> : ""}
+
+</div>
+      
+
+            
+
+             
         </main>
 
 

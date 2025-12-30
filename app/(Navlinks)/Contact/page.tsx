@@ -1,16 +1,18 @@
 import Image from 'next/image'
 import React from 'react'
 import contact from "@/images/Contac.png"
+import Footer from '@/app/components/Footer'
 
 export default function page() {
   return (
-    <main className='pt-20 min-h-screen bg-black flex justify-center items-center'>
-      <section className='bg-[linear-gradient(to_right,#111,#222,#333,#444)] px-3 w-5xl shadow-md rounded-md shadow-white h-128 flex items-center lg:flex-row flex-col justify-between'>
+    <main className='pt-25 gap-8 min-h-screen w-full bg-black flex flex-col justify-center items-center'>
+      <section className='bg-[linear-gradient(to_right,#111,#222,#333,#444)] px-3 lg:w-5xl shadow-md w-[90%] rounded-md shadow-white h-128 flex items-center lg:flex-row flex-col justify-between'>
 
         {/* HEADER TEXT */}
 
-        <section className='h-full'>
-          <p className='text-white text-[50px] font-bold'>How can we <span className='bg-red-500 text-white px-1  rounded-md'>Assist</span> you?</p>
+        <section className='h-full w-[90%] '>
+          <p className='text-white lg:text-[50px] text-[20px]
+           font-bold'>How can we <span className='bg-red-500 text-white px-1  rounded-md'>Assist</span> you?</p>
 
           {/* FORM STARTED */}
 
@@ -18,7 +20,7 @@ export default function page() {
 
             {/* EMAIL INPUT */}
 
-            <div className='flex flex-col w-sm gap-2 pt-5'>
+            <div className='flex flex-col lg:w-sm w:48 gap-2 pt-5'>
               <label className='text-white'>Email</label>
               <input
                 placeholder='e.g: Some@gmail.com'
@@ -27,7 +29,7 @@ export default function page() {
 
             {/* MESSAGE INPUT */}
 
-            <div className='flex flex-col w-sm  gap-2'>
+            <div className='flex flex-col lg:w-sm w-68  gap-2'>
               <label className='text-white'>Message</label>
               <textarea
                 placeholder='Enter Your Message....'
@@ -37,8 +39,8 @@ export default function page() {
 
             {/* SUBMIT BUTTON */}
 
-            <div className='w-sm pt-8'>
-              <button className='text-center bg-red-500 w-full hover:cursor-pointer hover:scale-105 transition-transform rounded-md p-2 text-white'>Send Message</button>
+            <div className='lg:w-sm pt-8 flex items-center justify-center'>
+              <button className='text-center bg-red-500 lg:w-full  w-48 hover:cursor-pointer hover:scale-105 transition-transform rounded-md p-2 text-white'>Send Message</button>
 
             </div>
           </form>
@@ -56,7 +58,7 @@ export default function page() {
           </div>
         </section>
       </section>
-
+<Footer/>
     </main>
   )
 }

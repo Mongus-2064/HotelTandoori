@@ -1,18 +1,19 @@
+import Footer from "@/app/components/Footer";
 import Image from "next/image";
 import React from "react";
 
 export default function page() {
   return (
-    <main className="pt-20 min-h-screen bg-black flex justify-center items-center">
-      <section className="bg-[linear-gradient(to_right,#111,#222,#333,#444)] px-6 w-5xl shadow-md rounded-md shadow-white h-128 flex items-center justify-center ">
+    <main className="pt-25 min-h-screen bg-black flex flex-col gap-8 justify-center items-center">
+      <section className="bg-[linear-gradient(to_right,#111,#222,#333,#444)] px-6 w-72 lg:w-5xl shadow-md rounded-md shadow-white h-128 flex items-center justify-center ">
 
         {/* TEXT SECTION */}
         <section className="h-full flex flex-col w-full justify-center items-center">
-          <p className="text-white text-[50px] font-bold leading-tight">
+          <p className="text-white text-[25px] lg:text-[50px] font-bold leading-tight text-nowrap">
             About <span className="bg-red-500 text-white px-2 rounded-md">Hotel</span> Tandoori
           </p>
 
-          <p className="text-gray-300 max-w-md pt-6 leading-relaxed">
+          <p className="text-gray-300  lg:max-w-md pt-6 leading-relaxed">
             Hotel Tandoori is where authentic flavors meet modern hospitality.
             We serve rich, traditional recipes crafted with fresh ingredients,
             delivering a dining experience that feels both premium and homely.
@@ -39,10 +40,8 @@ export default function page() {
             </div>
           </div>
         </section>
-
-        
-
       </section>
+      <Footer/>
     </main>
   );
 }

@@ -27,18 +27,19 @@ export default function page() {
 
 
   return (
-    <main className='bg-black min-h-screen pt-20 w-full'>
+    <main className='bg-black min-h-screen pt-20 w-full flex p-10'>
       <motion.section
         className='w-full pt-10'
       >
 
-        <p className='text-white text-[40px] font-bold text-center pb-10'>Tandoori Hotel Menu</p>
+        <p className='text-white md:text-[25px] lg:text-[40px] font-bold text-center pb-10'>Tandoori Hotel Menu</p>
 
-        <section className='w-full flex px-10 gap-2 '>
+        <section className='w-full  flex  gap-2 '>
 
+        {/* SEARCH BOX FOR FOOD */}
 
-          <div className='relative flex w-full items-center'>
-            <p className='text-gray-800 absolute px-2'><Typewriter
+          <div className='relative flex w-full items-center gap-2 flex-col lg:flex-row'>
+            <p className='text-gray-600 absolute px-2'><Typewriter
             words={['Search your favorite food','Find your favorite dish','What are you craving ? ','Type your food name here momo,pizza']}
             cursor
             cursorStyle= "|"
@@ -49,16 +50,23 @@ export default function page() {
             /></p>
 
 
-
-            <input className='bg-gray-200 w-full py-2 rounded-md px-2 shadow-sm shadow-white' />
+<div className='w-full flex flex-col lg:flex-row justify-center '>
+   <input className='bg-gray-200 w-full py-2 rounded-md px-2 shadow-sm shadow-white' />
           </div>
 
+        {/* SEARCH BUTTON */}
 
-          <button className='bg-red-500 flex hover:scale-102 transition-transform duration 300 hover:cursor-pointer justify-center gap-2 text-white p-2 rounded-md w-60'><Search/>Search</button>
+          <button className='bg-red-500 flex hover:scale-102 transition-transform duration 300 hover:cursor-pointer justify-center gap-2 text-white p-2 rounded-md w-full lg:w-60'><Search/>Search</button>
+</div>
+         
         </section>
         <section>
+
+
+    {/* FOOD CARDS */}
+
 <motion.section
-                className='flex flex-col items-center'
+                className='flex flex-col items-center justify-center w-full '
                 initial={{opacity:0 , y:40}}
                 whileInView={{opacity:1 , y:0}}
                 viewport={{once:true}}
@@ -70,10 +78,10 @@ export default function page() {
                      
           
 
-            <section className='  grid grid-cols-4  gap-8  pt-10 w-[90%] shadow-lg'>
+            <section className='  grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3  gap-8 w-full lg:max-w-screen justiy-center  pt-10  shadow-lg'>
                 {menu.map((food) => (
                     <div
-                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-full h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
+                        className='  bg-black w-full lg:w-96  outline shadow-gray-600 shadow-md  flex flex-col   h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
                         key={food.id}>
 
 

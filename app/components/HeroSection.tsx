@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookPlus, MoveUpRight, ShoppingCart } from "lucide-react";
 import {motion} from "framer-motion"
+import Footer from "./Footer";
 
 export default function HeroSection() {
   return (
@@ -13,8 +14,9 @@ export default function HeroSection() {
 
       <motion.section
       initial= {{opacity: 0 , y:40}}
+
       whileInView={{opacity:1 , y:0}}
-      viewport={{once: true}}
+
       transition={{duration: 1 , delay:0.1}}
       className="flex flex-col-reverse lg:flex-row gap-4 pt-25 px-10">
 
@@ -67,7 +69,6 @@ export default function HeroSection() {
       <div className="  flex justify-center pt-12">
         <hr className="text-white  w-[90%] text-center" />
       </div>
-
 
 
 
