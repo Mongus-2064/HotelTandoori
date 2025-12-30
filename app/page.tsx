@@ -15,8 +15,6 @@ export default function page() {
 <Recomendedfood/>
 <Experience/>
     <Footer/>
-
-      
     </main>
   )
 }
