@@ -5,18 +5,23 @@ import React, { useState } from 'react'
 import logo from "@/images/images-copy2.png"
 import Maxwidthwrapper from '@/Layout/Maxwidthwrapper'
 import Link from 'next/link'
-import { Cross, HamburgerIcon, Menu, SquareX } from 'lucide-react'
+import { Contact, Cross, HamburgerIcon, Home, InfoIcon, Menu, ShoppingBag, SquareX } from 'lucide-react'
 import Mobilemenu from './Hamburgermenu'
+
+
+
+
 
 export default function Navbar() {
 
     const [isopen , setIsOpen] =useState(false)
 
     const navlinks = [
-        { label: "Home", href: "/" ,id:"1" },
-        { label: "Menu", href: "/Menu",id:"2" },
-        { label: "About", href: "/About",id:"3" },
-        {label:"Contact" , href:"/Contact",id:"4"}
+        { label: "Home", href: "/" ,id:"1",icon:Home },
+        { label: "Menu", href: "/Menu",id:"2",icon:Menu },
+        { label: "About", href: "/About",id:"3",icon:InfoIcon},
+        {label:"Contact" , href:"/Contact",id:"4",icon:Contact},
+        {label:"Cart", href:"/cart",id:"5",icon:ShoppingBag}
     ]
 
     return (
@@ -36,10 +41,12 @@ export default function Navbar() {
 
             {navlinks.map((link)=>(
                 <div
+                className='flex'
                  key={link.id}>
                     <Link
-                      className='hover:bg-red-600 inline-block  hover:text-white p-2 rounded-md hover:scale-105 transition-transform duration-300'
+                      className='hover:bg-red-600 flex items-center gap-2 justify-center hover:text-white p-2 rounded-md hover:scale-105 transition-transform duration-300'
                     href={link.href}>
+                    <link.icon className='text-white'size={14}/>
                     {link.label}
                     </Link>
                 </div>

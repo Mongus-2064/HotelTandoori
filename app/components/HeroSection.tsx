@@ -8,7 +8,7 @@ import Footer from "./Footer";
 
 export default function HeroSection() {
   return (
-    <main className="h-screen bg-black ">
+    <main className="min-h-screen bg-black ">
 
     
 
