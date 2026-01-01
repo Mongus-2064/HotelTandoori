@@ -29,7 +29,7 @@ export async function POST(req:Request){
             username , email, password:hashedpassword  
         });
 
-        return  NextResponse.json({msg: {email:validateddata.email ,username:validateddata.username}  }, {status:201});
+        return  NextResponse.json(  {msg:"Account Created successfully",emailresponse:validateddata.email ,usernameresponse:validateddata.username}, {status:201});
 
     } catch (error) {
         return NextResponse.json({err:"Error:",error}, {status:500})
