@@ -1,12 +1,16 @@
 "use client"
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "@/images/images-copy2.png"
 import Maxwidthwrapper from '@/Layout/Maxwidthwrapper'
 import Link from 'next/link'
 import { Contact, Cross, HamburgerIcon, Home, InfoIcon, Menu, ShoppingBag, SquareX } from 'lucide-react'
 import Mobilemenu from './Hamburgermenu'
+import { usePathname } from 'next/navigation'
+import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
+
 
 
 
@@ -15,6 +19,29 @@ import Mobilemenu from './Hamburgermenu'
 export default function Navbar() {
 
     const [isopen , setIsOpen] =useState(false)
+    const pathname = usePathname();
+    const [showusername , setShowUserName] = useState<string>("");
+    const router = useRouter()
+
+    const handlelogout = async ()=>{
+        
+        localStorage.removeItem("token");
+        setShowUserName("");
+        localStorage.removeItem("username");
+        toast.success("Logged out");
+    }
+
+    useEffect(()=>{
+            const tokenchecker = localStorage.getItem("token");
+            const username = localStorage.getItem("username");
+        
+             if(username && tokenchecker)
+             {
+            setShowUserName(username)
+
+             }
+
+    } , [pathname])
 
     const navlinks = [
         { label: "Home", href: "/" ,id:"1",icon:Home },
@@ -26,7 +53,7 @@ export default function Navbar() {
 
     return (
 
-        <main className='bg-black/40  flex  justify-between items-center flex-col lg:flex-row border-b border-white backdrop-blur-lg lg:px-8 px-2 fixed z-10 w-full   gap-2 '>
+        <main className={` ${pathname === "/cart" ?"bg-black" : "bg-black/40" }   flex  justify-between items-center flex-col lg:flex-row border-b border-white backdrop-blur-lg lg:px-8 px-2 fixed z-10 w-full   gap-2`}>
             <section className=' flex flex-row items-center justify-between w-full'>
       <section className=' p-2 flex items-center '>
                 <Image
@@ -62,7 +89,17 @@ export default function Navbar() {
             </div>
 
 
-            <section className='lg:flex hidden gap-4 items-center'>
+            { showusername ? <div className='flex gap-2'>
+
+                <p className='bg-gray-800 px-8 text-white rounded-2xl p-2 text-[14px]'>Hello {showusername}</p> 
+
+            <button 
+            onClick={handlelogout}
+            className='px-8 rounded-md hover:cursor-pointer hover:bg-red-600  bg-red-500 text-white'>Logout</button></div> : 
+            
+            
+            
+            <div><section className='lg:flex hidden gap-4 items-center'>
                 <Link className='rounded-md border hover:border-white hover:bg-white hover:text-black hover:scale-105 duration-300  text-white px-10 py-2' href="/auth/login">Login</Link>
                 <Link
                     className='
@@ -71,7 +108,7 @@ export default function Navbar() {
                     href="/auth/signup">Signup</Link>
 
 
-            </section>
+            </section></div>}
             
             </section>
             <div className='lg:hidden self-center w-full flex justify-center items-center  '>

@@ -1,29 +1,52 @@
 "use client"
 
-import React from 'react'
+import React, { addTransitionType } from 'react'
 import { motion } from "framer-motion"
 import { Typewriter } from 'react-simple-typewriter'
 import { Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useorderstore } from '@/app/store/addorder'
+import { toast } from 'react-toastify'
+import IFood from '@/app/Types/food'
 
 export default function page() {
 
+  const addorder= useorderstore((state)=> state.addtoorder);
+
+    const handleaddorder = (food:IFood)=>{
+      addorder({
+        id: food.id,
+        name: food.name,
+        quantity:food.qty,
+        pic:food.pic,
+        category:food.category,
+        price: food.price,
+
+      })
+
+      toast.success("Added to cart Successfully");
+    }
+
+
   const menu = [
         {
-            name: "Khana set", price: "Npr.125", category: "MainCourse",
-            pic: "https://www.beyultreks.com/wp-content/uploads/2017/06/dal-bhat-Nepalese-food.jpg", id: "1"
+            name: "Khana set", price:125, category: "MainCourse",
+            pic: "https://www.beyultreks.com/wp-content/uploads/2017/06/dal-bhat-Nepalese-food.jpg", id: "1",qty:1
         },
-        { name: "Chicken:momo", price: "Npr.150", category: "savory snack", pic: "https://static.india.com/wp-content/uploads/2024/12/FEATURE-2024-12-15T174448.090.jpg?impolicy=Medium_Widthonly&w=350&h=263", id: "2" },
-        { name: "Chowmein", price: "Npr.110", category: "savory snack", pic: "https://i.ytimg.com/vi/gbygXUDbf2Q/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCCbRvjuTJjSuiR5OSYJuE9AKfsDg", id: "3" },
+        { name: "Chicken:momo", price: 150, category: "savory snack", pic: "https://static.india.com/wp-content/uploads/2024/12/FEATURE-2024-12-15T174448.090.jpg?impolicy=Medium_Widthonly&w=350&h=263", id: "2" ,qty:1},
+        { name: "Chowmein", price: 110, category: "savory snack", pic: "https://i.ytimg.com/vi/gbygXUDbf2Q/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCCbRvjuTJjSuiR5OSYJuE9AKfsDg", id: "3",qty:1 },
          {
-            name: "Khana set", price: "Npr.125", category: "MainCourse",
-            pic: "https://www.beyultreks.com/wp-content/uploads/2017/06/dal-bhat-Nepalese-food.jpg", id: "4"
+            name: "Khana set", price: 125, category: "MainCourse",
+            pic: "https://www.beyultreks.com/wp-content/uploads/2017/06/dal-bhat-Nepalese-food.jpg", id: "4",qty:1
         },
-        { name: "Chicken:momo", price: "Npr.150", category: "savory snack", pic: "https://static.india.com/wp-content/uploads/2024/12/FEATURE-2024-12-15T174448.090.jpg?impolicy=Medium_Widthonly&w=350&h=263", id: "5" },
-        { name: "Chowmein", price: "Npr.110", category: "savory snack", pic: "https://i.ytimg.com/vi/gbygXUDbf2Q/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCCbRvjuTJjSuiR5OSYJuE9AKfsDg", id: "6" }
+        { name: "Chicken:momo", price: 150, category: "savory snack", pic: "https://static.india.com/wp-content/uploads/2024/12/FEATURE-2024-12-15T174448.090.jpg?impolicy=Medium_Widthonly&w=350&h=263", id: "5",qty:1 },
+        { name: "Chowmein", price: 110, category: "savory snack", pic: "https://i.ytimg.com/vi/gbygXUDbf2Q/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCCbRvjuTJjSuiR5OSYJuE9AKfsDg", id: "6",qty:1 }
     ]
 
+   
+
+   
 
 
   return (
@@ -102,10 +125,12 @@ export default function page() {
                             <p className='text-white font-bold text-[22px]'>{food.name}</p>
                             <p className='text-gray-400'>{food.price}</p>
                             <p className='text-gray-400'>{food.category}</p>
-                            
+                            <p hidden className='text-gray-400'>{food.qty}</p>
                         </div>
                         <div className='bg-black w-full flex justify-center p-2 rounded-lg'>
-                        <Link href="/menu" className=' bg-red-700 text-center p-2 rounded-md w-full transition-transform duration-300 text-white hover:scale-105 hover:w-[90%]'>Order Now</Link>
+                        <button
+                     onClick={()=> handleaddorder(food)}
+                           className=' bg-red-700 text-center p-2 rounded-md w-full transition-transform duration-300 text-white hover:scale-105 hover:w-[90%]'>Order Now</button>
                         </div>
                         
                        </div>

@@ -46,11 +46,13 @@ const userpassword = validateddata.password
 
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY as string, { expiresIn: "1h" });
 
-        return NextResponse.json({ msg: "Logged in Successfully", token }, { status: 200 })
+        return NextResponse.json({ msg: "Logged in Successfully", token ,username}, { status: 200 })
 
 
     } catch (error) {
         return NextResponse.json({ msg: "Internal Server Error", error }, { status: 500 });
     }
 }
+
+
 
