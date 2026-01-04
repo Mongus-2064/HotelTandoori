@@ -89,7 +89,7 @@ export default function Navbar() {
             </div>
 
 
-            { showusername ? <div className='flex gap-2'>
+            { showusername ? <div className='lg:flex hidden  gap-2'>
 
                 <p className='bg-gray-800 px-8 text-white rounded-2xl p-2 text-[14px]'>Hello {showusername}</p> 
 

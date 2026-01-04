@@ -11,7 +11,8 @@ const nextConfig: NextConfig = {
 
     { hostname: "www.beyultreks.com" },
     { hostname: "i.ytimg.com" },
-    {hostname : "static.india.com"}
+    {hostname : "static.india.com"},
+    {hostname: "eastbaygaslines.com"}
     ]
   }
 };

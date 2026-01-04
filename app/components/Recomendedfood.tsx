@@ -17,7 +17,7 @@ export default function Recomendedfood() {
     ]
 
     return (
-        <main className=' flex  items-center w-full flex-col bg-black min-h-screen pt-10'>
+        <main className=' flex justify-center  items-center w-full flex-col bg-black min-h-screen '>
 
                 <motion.section
                 className='flex flex-col items-center'
@@ -30,13 +30,13 @@ export default function Recomendedfood() {
                 >
                      
             <section>
-                <p className='text-white text-center text-[50px] font-bold'>Recommended <span className='text-red-500'>Cuisines</span></p>
+                <p className='text-white text-center text-[28px] pt-5 lg:text-[50px] font-bold pb-6'>Recommended <span className='text-red-500'>Cuisines</span></p>
             </section>
 
-            <section className='  flex flex-col lg:flex-row items-center justify-between gap-8  pt-10 w-[80%] shadow-lg'>
+            <section className='  flex flex-col lg:flex-row items-center justify-between gap-8  pt-10 w-full shadow-lg'>
                 {recommendedfood.map((food) => (
                     <div
-                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-90 h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
+                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-[95%] lg:w-100 h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
                         key={food.id}>
 
 
@@ -60,7 +60,7 @@ export default function Recomendedfood() {
                             
                         </div>
                         <div className='bg-black w-full flex justify-center p-2 rounded-lg'>
-                        <Link href="/menu" className=' bg-red-700 text-center p-2 rounded-md w-full transition-transform duration-300 text-white hover:scale-105 hover:w-[90%]'>Order Now</Link>
+                        <Link href="/menu" className=' bg-red-700 text-center p-2 rounded-md w-full transition-transform duration-300 text-white hover:scale-105 '>Order Now</Link>
                         </div>
                         
                        </div>

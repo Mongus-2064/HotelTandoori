@@ -52,6 +52,8 @@ export const useorderstore = create<Order>((set) => ({
 
     })),
 
+
+
 clearorder:()=> set({orders:[]}),
 
 }));

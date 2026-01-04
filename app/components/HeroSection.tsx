@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookPlus, MoveUpRight, ShoppingCart } from "lucide-react";
 import {motion} from "framer-motion"
-import Footer from "./Footer";
+
 
 export default function HeroSection() {
   return (
@@ -43,7 +43,7 @@ export default function HeroSection() {
 
           {/* BUTTONS */}
 
-          <div className=" flex flex-col lg:flex-row pt-5 lg:pt-10 w-full  lg:w-[90%] px-4 gap-2">
+          <div className=" flex flex-col lg:flex-row pt-5 lg:pt-10 w-full  lg:w-[90%] gap-4">
             <Link className=" w-full flex justify-center items-center text-white bg-red-600 border border-red-600 py-2 rounded-md hover:scale-105 transition-transform duration-300 gap-2 " href="/book">Book a Reservation<span><BookPlus size={19} /></span></Link>
 
             <Link className=" w-full flex gap-2 items-center justify-center text-black border border-white bg-white  hover:bg-transparent hover:text-white hover:scale-105 transition-transform duration-300 py-2 rounded-md" href="/order">Order Now<span><ShoppingCart size={19} /></span></Link>
@@ -55,13 +55,13 @@ export default function HeroSection() {
 
         {/* HERO SECTION IMAGE */}
 
-        <section className=" w-full relative h-48 lg:h-96">
+        <section className=" lg:w-[80%] relative rounded-lg shadow-gray-700/40 shadow-lg h-48 lg:h-96">
           <Image
-            src={"https://images.stockcake.com/public/f/b/1/fb19e250-2549-4daf-a880-179538d0f7f2_large/chef-cooking-flambe-stockcake.jpg"}
+            src={"https://eastbaygaslines.com/wp-content/uploads/2017/05/AdobeStock_90208011.jpeg"}
             alt="chef-pic"
             fill
             unoptimized
-            className="object-cover object-center "
+            className=" object-cover rounded-lg object-top-left"
           />
         </section>
       </motion.section>

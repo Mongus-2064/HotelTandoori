@@ -9,7 +9,7 @@ export default function Experience() {
                    <div className="  flex justify-center ">
 <hr className="text-white  w-[90%] text-center"/>
       </div>
-        <section className='pt-5 w-full flex flex-col items-center justify-center '>
+        <section className='w-full flex flex-col items-center justify-center '>
 
 
             {/* HEADER */}
