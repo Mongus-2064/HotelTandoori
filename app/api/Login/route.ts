@@ -44,9 +44,10 @@ const userpassword = validateddata.password
 
         // JWT TOKEN CREATION
 
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY as string, { expiresIn: "1h" });
+        const token = jwt.sign({ userId: user._id  }, process.env.JWT_SECRET_KEY as string, { expiresIn: "1h" });
 
-        return NextResponse.json({ msg: "Logged in Successfully", token ,username}, { status: 200 })
+        return NextResponse.json({ msg: "Logged in Successfully", token,user:{role:user.role,
+         username:user.username}}, { status: 200 });
 
 
     } catch (error) {

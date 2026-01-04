@@ -26,10 +26,10 @@ export async function POST(req:Request){
         const hashedpassword = await bcrypt.hash(validateddata.password , 10)
 
         await User.create({
-            username , email, password:hashedpassword  
+            username , email, password:hashedpassword ,role:"user"
         });
 
-        return  NextResponse.json(  {msg:"Account Created successfully",emailresponse:validateddata.email ,usernameresponse:validateddata.username}, {status:201});
+        return  NextResponse.json(  {msg:"Account Created successfully",emailresponse:validateddata.email ,usernameresponse:validateddata.username , role:"user"}, {status:201});
 
     } catch (error) {
         return NextResponse.json({err:"Error:",error}, {status:500})

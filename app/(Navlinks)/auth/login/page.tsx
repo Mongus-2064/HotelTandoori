@@ -32,8 +32,9 @@ export default function page() {
       if (!data.ok) {
         return toast.error(res.msg);
       }
+      console.log(res);
       localStorage.setItem("token", res.token);
-      localStorage.setItem("username",res.username);
+      localStorage.setItem("username",res.user.username);
         router.push("/")
       
       toast.success(res.msg);

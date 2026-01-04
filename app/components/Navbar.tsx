@@ -23,7 +23,7 @@ export default function Navbar() {
     const [showusername , setShowUserName] = useState<string>("");
     const router = useRouter()
 
-    const handlelogout = async ()=>{
+    const handlelogout =  ()=>{
         
         localStorage.removeItem("token");
         setShowUserName("");
