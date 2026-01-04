@@ -7,10 +7,8 @@ import bcrypt from "bcrypt"
 export async function POST(req:Request){
     try {
         await databaseconnection();
-        const formdata = await req.formData();
-        const username = formdata.get("username") as string
-        const email = formdata.get("email") as string
-        const password = formdata.get("password") as string
+        const body = await req.json();
+        const {username , email , password} = body 
 
         const userschema = z.object({
             username: z.string().min(1, "Username is required").min(3, "Username mustbe greater than 3 characters"),

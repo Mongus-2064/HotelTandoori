@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 export  async function POST(req:Request){
 try {
     await databaseconnection();
-    const formdata = await req.formData();
-    const message = formdata.get("message") as string;
+    const body = await req.json();
+    const {message} = body
 
     if(!message)
     {

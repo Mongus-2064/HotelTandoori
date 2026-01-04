@@ -8,10 +8,8 @@ import { NextResponse } from "next/server"
 export async function POST(req: Request) {
     try {
         await databaseconnection();
-        const formdata = await req.formData();
-        const username = formdata.get("username") as string
-        const email = formdata.get("email") as string
-        const password = formdata.get("password") as string
+        const body = await req.json();
+        const {username , email , password} = body ;
 
         // VALIDATING IF USER HAD ALL INFO OR NOT USING ZOD
 
