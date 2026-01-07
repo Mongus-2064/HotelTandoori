@@ -33,10 +33,10 @@ export default function Recomendedfood() {
                 <p className='text-white text-center text-[28px] pt-5 lg:text-[50px] font-bold pb-6'>Recommended <span className='text-red-500'>Cuisines</span></p>
             </section>
 
-            <section className='  flex flex-col lg:flex-row items-center justify-between gap-8  pt-10 w-full shadow-lg'>
+            <section className=' flex flex-col lg:flex-row items-center justify-between gap-8  pt-10 w-full shadow-lg'>
                 {recommendedfood.map((food) => (
                     <div
-                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-[95%] lg:w-100 h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
+                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-[95%]  lg:w-100 h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
                         key={food.id}>
 
 

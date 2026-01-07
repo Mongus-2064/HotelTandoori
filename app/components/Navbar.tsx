@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import logo from "@/images/images-copy2.png"
+import logo from "@/images/Logo.png"
 import Maxwidthwrapper from '@/Layout/Maxwidthwrapper'
 import Link from 'next/link'
 import { Contact, Cross, HamburgerIcon, Home, InfoIcon, Menu, ShoppingBag, SquareX } from 'lucide-react'
@@ -55,14 +55,14 @@ export default function Navbar() {
 
         <main className={` ${pathname === "/cart" ?"bg-black" : "bg-black/40" }   flex  justify-between items-center flex-col lg:flex-row border-b border-white backdrop-blur-lg lg:px-8 px-2 fixed z-10 w-full   gap-2`}>
             <section className=' flex flex-row items-center justify-between w-full'>
-      <section className=' p-2 flex items-center '>
+      <section className=' p-2 flex items-center relative w-32 h-20 '>
                 <Image
                     src={logo}
                     alt='logo'
-                    width={48}
-                    height={48}
+                   fill
+                   className='object-cover'
                 />
-                <p className='logo text-red-500 text-[32px] text-center lg:text-[40px]'>Tandoori</p>
+               
             </section>
             <section className=' lg:flex hidden gap-4 text-[18px] text-gray-400'>
 

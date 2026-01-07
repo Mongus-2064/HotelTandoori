@@ -1,70 +1,90 @@
-"use client";
+"use client"
+
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
 import Link from "next/link";
 import { BookPlus, MoveUpRight, ShoppingCart } from "lucide-react";
-import {motion} from "framer-motion"
+import { motion } from "framer-motion"
+import heroimage from "@/images/herosection.jpg"
+import {Swiper , SwiperSlide} from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import {Navigation , Pagination} from "swiper/modules"
 
 
 export default function HeroSection() {
+
+  const images = [ 
+    {url:"https://media.istockphoto.com/id/637790866/photo/100-lamb-greek-burger.jpg?s=612x612&w=0&k=20&c=cYxRAfU7OdjJCK4M7dbH4YUIk7SGqETlDvONBEOATuw=" ,id:1 },
+    {url:"https://img.freepik.com/free-photo/fried-chicken-breast-cheese-tomato-french-fries-ketchup-green-salad-side-view-jpg_141793-1782.jpg?semt=ais_hybrid&w=740&q=80",id:2},
+    {url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2RnRhiGJxmEcWUGx7zh9SVP888-AO-eC97Q&s",id:3}
+  
+  ] 
+
+
   return (
-    <main className="min-h-screen bg-black ">
+    <main className="min-h-screen bg-black pt-20 ">
 
-    
-
-      <motion.section
-      initial= {{opacity: 0 , y:40}}
-
-      whileInView={{opacity:1 , y:0}}
-
-      transition={{duration: 1 , delay:0.1}}
-      className="flex flex-col-reverse lg:flex-row gap-4 pt-25 px-10">
+      <section>
+        <div className="w-full  flex flex-col items-center  pt-6">
 
 
-        <section className=" flex flex-col gap-8 w-full">
+          <p className="text-white flex items-center justify-center text-[60px] text-center w-full font-bold">
+            <span className="text-red-500 text-[60px] font-bold"></span>
+            <span className="mr-4">We</span>
 
-          {/* TYPEWRITER EFFECT */}
-
-          <p className="lg:text-start w-full text-center text-white text-[24px] lg:text-[50px] font-bold">We are ready to <span className="text-red-500">
-            <Typewriter
-              words={['Cook', 'Server', 'Deliver']}
-              cursor
-              cursorStyle="|"
-              loop={0}
-              delaySpeed={1200}
-              typeSpeed={100}
-              deleteSpeed={100}
-            />
-          </span>
+            <span className="text-red-500 inline-block w-55 text-left">
+              <Typewriter
+                words={['Cook', 'Deliver', 'Serve']}
+                delaySpeed={1200}
+                cursor
+                cursorStyle="|"
+                typeSpeed={200}
+                deleteSpeed={200}
+                loop={0}
+              />
+            </span>
 
           </p>
-          <p className="text-gray-400 text-wrap lg:text-nowrap">“Thoughtfully cooked with love, quality, and the finest ingredients.<span className="hidden lg:inline"><br /></span>Delivered hot,fresh, and ready to make your day better.”</p>
 
-
-          {/* BUTTONS */}
-
-          <div className=" flex flex-col lg:flex-row pt-5 lg:pt-10 w-full  lg:w-[90%] gap-4">
-            <Link className=" w-full flex justify-center items-center text-white bg-red-600 border border-red-600 py-2 rounded-md hover:scale-105 transition-transform duration-300 gap-2 " href="/book">Book a Reservation<span><BookPlus size={19} /></span></Link>
-
-            <Link className=" w-full flex gap-2 items-center justify-center text-black border border-white bg-white  hover:bg-transparent hover:text-white hover:scale-105 transition-transform duration-300 py-2 rounded-md" href="/order">Order Now<span><ShoppingCart size={19} /></span></Link>
-          </div>
-
-        </section>
-
-
-
-        {/* HERO SECTION IMAGE */}
-
-        <section className=" lg:w-[80%] relative rounded-lg shadow-gray-700/40 shadow-lg h-48 lg:h-96">
-          <Image
-            src={"https://eastbaygaslines.com/wp-content/uploads/2017/05/AdobeStock_90208011.jpeg"}
-            alt="chef-pic"
+         
+        </div>
+      </section>
+      <section>
+        <div>
+          <Swiper
+            modules={[Navigation , Pagination]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            pagination={{clickable:true}}
+            autoplay={true}
+            className=" flex items-center justify-center bg-red-500 p-5 max-w-4xl mx-auto"
+        >
+          {images.map((img)=>(
+          <SwiperSlide 
+            
+          key={img.id}>
+            <div className="relative w-full h-48">
+<Image
+            src={img.url}
+            alt="hello"
             fill
-            unoptimized
-            className=" object-cover rounded-lg object-top-left"
-          />
-        </section>
-      </motion.section>
+            className="object-cover w-96 bg-purple-500 p-2"
+            />
+            </div>
+            
+          </SwiperSlide>
+
+          ))}
+        </Swiper>
+
+          
+        </div>
+      </section>
+
+
 
       <div className="  flex justify-center pt-12">
         <hr className="text-white  w-[90%] text-center" />

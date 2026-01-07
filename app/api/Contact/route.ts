@@ -6,7 +6,7 @@ export  async function POST(req:Request){
 try {
     await databaseconnection();
     const body = await req.json();
-    const {message} = body
+    const {message} = body;
 
     if(!message)
     {
