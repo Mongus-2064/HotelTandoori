@@ -17,11 +17,12 @@ export default function Recomendedfood() {
     ]
 
     return (
-        <main className=' flex justify-center  items-center w-full flex-col bg-black min-h-screen '>
+        <main className=' flex justify-center items-center w-full flex-col bg-black min-h-screen '>
 
                 <motion.section
-                className='flex flex-col items-center'
+                className='flex flex-col items-center  justify-center'
                 initial={{opacity:0 , y:40}}
+                viewport={{once:true}}
                 whileInView={{opacity:1 , y:0}}
                 transition={{duration:0.6 , delay:0.1
 
@@ -33,10 +34,10 @@ export default function Recomendedfood() {
                 <p className='text-white text-center text-[28px] pt-5 lg:text-[50px] font-bold pb-6'>Recommended <span className='text-red-500'>Cuisines</span></p>
             </section>
 
-            <section className=' flex flex-col lg:flex-row items-center justify-between gap-8  pt-10 w-full shadow-lg'>
+            <section className='  flex flex-col lg:flex-row items-center justify-between gap-8  pt-15 w-full shadow-lg'>
                 {recommendedfood.map((food) => (
                     <div
-                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-[95%]  lg:w-100 h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
+                        className='  bg-black outline shadow-gray-600 shadow-md  flex flex-col w-[95%]  lg:w-100 h-96 lg:h-100 rounded-lg  hover:scale-105 duration-300 transition-transform '
                         key={food.id}>
 
 

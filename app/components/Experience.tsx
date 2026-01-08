@@ -5,11 +5,11 @@ import Footer from './Footer'
 
 export default function Experience() {
   return (
-    <main className='bg-black min-h-screen flex flex-col justify-center '>
+    <main className='bg-black min-h-screen flex flex-col pt-10 '>
                    <div className="  flex justify-center ">
-<hr className="text-white  w-[90%] text-center"/>
+<hr className="text-white  w-[90%] text-center pb-10"/>
       </div>
-        <section className='w-full flex flex-col items-center justify-center '>
+        <section className='w-full flex flex-col  min-h-screen items-center justify-center '>
 
 
             {/* HEADER */}
