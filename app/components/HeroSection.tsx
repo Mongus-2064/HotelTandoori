@@ -2,96 +2,81 @@
 
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
-import Link from "next/link";
-import { BookPlus, MoveUpRight, ShoppingCart } from "lucide-react";
-import { motion } from "framer-motion"
-import heroimage from "@/images/herosection.jpg"
-import {Swiper , SwiperSlide} from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import {Navigation , Pagination} from "swiper/modules"
+import hero from "@/images/hero.jpeg"
+import { ArrowRight } from "lucide-react";
 
 
 export default function HeroSection() {
+return (
+  <main className="">
 
-  const images = [ 
-    {url:"https://media.istockphoto.com/id/637790866/photo/100-lamb-greek-burger.jpg?s=612x612&w=0&k=20&c=cYxRAfU7OdjJCK4M7dbH4YUIk7SGqETlDvONBEOATuw=" ,id:1 },
-    {url:"https://img.freepik.com/free-photo/fried-chicken-breast-cheese-tomato-french-fries-ketchup-green-salad-side-view-jpg_141793-1782.jpg?semt=ais_hybrid&w=740&q=80",id:2},
-    {url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2RnRhiGJxmEcWUGx7zh9SVP888-AO-eC97Q&s",id:3}
-  
-  ] 
+  {/* IMAGE SECTION */}
 
+  <section className="">
+    <div className="relative min-h-screen w-full">
+      <Image
+      src={hero}
+      alt="hero-image"
+      fill
+      className="absolute"
+      />
+    </div>
 
-  return (
-    <main className="min-h-screen bg-black pt-20 ">
+    {/* HERO TEXT */}
 
-      <section>
-        <div className="w-full  flex flex-col items-center  pt-6">
-
-
-          <p className="text-white flex items-center justify-center text-[60px] text-center w-full font-bold">
-            <span className="text-red-500 text-[60px] font-bold"></span>
-            <span className="mr-4">We</span>
-
-            <span className="text-red-500 inline-block w-55 text-left">
-              <Typewriter
-                words={['Cook', 'Deliver', 'Serve']}
-                delaySpeed={1200}
-                cursor
-                cursorStyle="|"
-                typeSpeed={200}
-                deleteSpeed={200}
-                loop={0}
-              />
-            </span>
-
-          </p>
-
-         
-        </div>
-      </section>
-      <section>
-        <div>
-          <Swiper
-            modules={[Navigation , Pagination]}
-            spaceBetween={50}
-            slidesPerView={1}
-            navigation
-            pagination={{clickable:true}}
-            autoplay={true}
-            className=" flex items-center justify-center bg-red-500 p-5 max-w-4xl mx-auto"
-        >
-          {images.map((img)=>(
-          <SwiperSlide 
-            
-          key={img.id}>
-            <div className="relative w-full h-48">
-<Image
-            src={img.url}
-            alt="hello"
-            fill
-            className="object-cover w-96 bg-purple-500 p-2"
-            />
-            </div>
-            
-          </SwiperSlide>
-
-          ))}
-        </Swiper>
-
-          
-        </div>
-      </section>
+    <div className="absolute top-25 z-10 w-full flex justify-center ">
 
 
+      <div className="flex justify-center items-center flex-col ">
 
-      <div className="  flex justify-center pt-12">
-        <hr className="text-white  w-[90%] text-center" />
+
+ <p className="text-red-600 text-center bg-gray-800/30 border border-red-500  rounded-2xl py-1 px-4">Authentic Nepali Flavors</p>
+
+    <p className="text-[75px] font-bold text-white">We are <span className="text-red-500">Ready</span> to</p>
+
+
+    <div className="relative bg-red-500/80 flex justify-center items-center px-10 rounded-lg w-72 h-20">
+
+      <p className="text-[75px] font-bold text-center text-white absolute "><Typewriter
+    words={['Cook','Deliver','Serve']}
+    delaySpeed={1200}
+    cursor
+    cursorStyle= "|"
+    typeSpeed={200}
+    deleteSpeed={200}
+    loop={true}
+    /></p>
+    </div>
+
+     <p className="text-center text-white text-[20px] pt-6">From Steaming momo to aromatic dal bhat - Experience the rich flavors<br/> of Nepal Delivered straight to your doorstep</p>
+
+  {/* HERO SECTION BUTTONS */}
+
+     <div className="flex  flex-row w-full gap-3 pt-4">
+      <button className="bg-red-500 w-full rounded-md text-white hover:cursor-pointer hover:scale-105 transition-transform duration-300 flex py-4 justify-center gap-2">Order Now <ArrowRight/></button>
+      
+      <button className=" w-full rounded-md bg-gray-500/20 border border-white text-white hover:bg-white hover:text-black hover:cursor-pointer ">View Menu</button>
+     </div>
+    
       </div>
 
+     
+     
 
+    </div>
+  </section>
+
+    {/* GRADIENT */}
+
+      <div className="flex absolute inset-0 bg-linear-to-b from-black/50  to-black">
+      </div>
+
+       {/* HORIZONTAL LINE */}
+
+      <div className="flex justify-center w-[90%]">
+        <hr className="w-full border-t border-white" />
+      </div>
 
     </main>
-  );
+);
 }

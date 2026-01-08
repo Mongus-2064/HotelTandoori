@@ -53,7 +53,7 @@ export default function Navbar() {
 
     return (
 
-        <main className={` ${pathname === "/cart" ?"bg-black" : "bg-black/40" }   flex  justify-between items-center flex-col lg:flex-row border-b border-white backdrop-blur-lg lg:px-8 px-2 fixed z-10 w-full   gap-2`}>
+        <main className={` ${pathname === "/cart" ?"bg-black" : "bg-black/80" }   flex  justify-between items-center flex-col lg:flex-row border-b border-white backdrop-blur-lg lg:px-8 px-2 fixed z-999 w-full   gap-2`}>
             <section className=' flex flex-row items-center justify-between w-full'>
       <section className=' p-2 flex items-center relative w-32 h-20 '>
                 <Image
