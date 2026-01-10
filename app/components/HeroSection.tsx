@@ -31,7 +31,7 @@ export default function HeroSection() {
           </p>
 
           {/* Heading */}
-          <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-7xl">
+          <h1 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
             We are <span className="text-red-500">Ready</span> to
           </h1>
 

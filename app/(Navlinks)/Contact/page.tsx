@@ -21,7 +21,7 @@ export default function ContactPage() {
     try {
 
        if (!email || !message) {
-
+        setIsLoading(false);
       return toast.error("Please fill all fields");
     }
 
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 placeholder="e.g: berojgari@gmail.com"
                 type="email"
                 className="bg-transparent border-b text-white border-white outline-none"
-                required
+                
               />
             </div>
 
@@ -85,7 +85,7 @@ export default function ContactPage() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Enter Your Message...."
                 className="bg-gray-700 rounded-md h-32 placeholder:text-white p-2 text-white"
-                required
+                
               />
             </div>
 
@@ -93,6 +93,7 @@ export default function ContactPage() {
             <div className="lg:w-sm pt-8 flex items-center justify-center">
               <button
                 type="submit"
+                onClick={()=> setIsLoading(true)}
                 className="text-center bg-red-500 lg:w-full w-48 hover:cursor-pointer hover:scale-105 transition-transform rounded-md p-2 flex justify-center text-white"
               >
                 {isloading ? <Circleloader/> : <p>Send Message</p>}

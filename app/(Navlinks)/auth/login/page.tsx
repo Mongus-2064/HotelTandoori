@@ -5,12 +5,14 @@ import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
+import Circleloader from "@/Loaders/Circleloader";
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isloggedin , setIsLoggedIn] = useState<boolean>(false)
 
   const router = useRouter();
 
@@ -29,17 +31,22 @@ export default function LoginPage() {
       const res = await response.json();
 
       if (!response.ok) {
+        setIsLoggedIn(false)
+
         return toast.error(res.msg);
       }
 
       localStorage.setItem("token", res.token);
       localStorage.setItem("username", res.user.username);
       toast.success(res.msg);
+      setIsLoggedIn(false);
 
       router.push("/");
     } catch (error) {
       console.error("Login error:", error);
       toast.error("Internal Server Error");
+      setIsLoggedIn(false);
+
     }
   };
 
@@ -112,9 +119,10 @@ export default function LoginPage() {
           {/* BUTTON */}
           <button
             type="submit"
-            className="bg-red-500 text-white rounded-md p-3 mt-4 hover:scale-105 transition-transform"
+            onClick={()=> setIsLoggedIn(true)}
+            className="bg-red-500 flex justify-center text-white rounded-md p-3 mt-4 hover:scale-105 transition-transform hover:cursor-pointer" 
           >
-            Login
+            {isloggedin ? <Circleloader/> : <p className="py-1">Login</p>}
           </button>
         </form>
       </section>

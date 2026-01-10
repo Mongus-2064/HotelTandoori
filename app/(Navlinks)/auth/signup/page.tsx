@@ -4,14 +4,16 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Circleloader from "@/Loaders/Circleloader";
 
 export default function SignupPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [issignedup , setIsSigneUp] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -19,6 +21,8 @@ export default function SignupPage() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
+      setIsSigneUp(false);
+
       return toast.error("Passwords do not match");
     }
 
@@ -34,14 +38,20 @@ export default function SignupPage() {
       const res = await response.json();
 
       if (!response.ok) {
+      setIsSigneUp(false);
+
         return toast.error(res.msg || "Error while signing up");
       }
 
       toast.success(res.msg || "Account created successfully");
+      setIsSigneUp(false);
+
       setTimeout(() => router.push("/auth/login"), 2000);
     } catch (error) {
       console.error("Signup error:", error);
       toast.error("Internal Server Error");
+      setIsSigneUp(false);
+
     }
   };
 
@@ -69,7 +79,7 @@ export default function SignupPage() {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="e.g: tandoori_lover"
               className="bg-transparent border-b border-white text-white outline-none placeholder:text-gray-400"
-              required
+              
             />
           </div>
 
@@ -82,7 +92,7 @@ export default function SignupPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="e.g: example@gmail.com"
               className="bg-transparent border-b border-white text-white outline-none placeholder:text-gray-400"
-              required
+              
             />
           </div>
 
@@ -95,7 +105,7 @@ export default function SignupPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Create a password"
               className="bg-transparent border-b border-white text-white outline-none placeholder:text-gray-400 pr-10"
-              required
+              
             />
             <div
               onClick={() => setShowPassword(!showPassword)}
@@ -114,7 +124,7 @@ export default function SignupPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Re-enter your password"
               className="bg-transparent border-b border-white text-white outline-none placeholder:text-gray-400 pr-10"
-              required
+              
             />
             <div
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -127,9 +137,10 @@ export default function SignupPage() {
           {/* BUTTON */}
           <button
             type="submit"
-            className="bg-red-500 text-white rounded-md p-3 mt-4 hover:scale-105 transition-transform"
+          onClick={()=> setIsSigneUp(true)}
+            className="bg-red-500 text-white flex justify-center hover:cursor-pointer rounded-md p-3 mt-4 hover:scale-105 transition-transform"
           >
-            Create Account
+            {issignedup ? <Circleloader/> : <p className="py-1">Create Account</p>}
           </button>
 
           {/* FOOTER LINK */}
