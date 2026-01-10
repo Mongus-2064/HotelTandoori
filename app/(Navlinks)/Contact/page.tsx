@@ -5,19 +5,26 @@ import React, { useState } from "react";
 import contact from "@/images/Contac.png";
 import Footer from "@/app/components/Footer";
 import { toast } from "react-toastify";
+import Circleloader from "@/Loaders/Circleloader";
+
 
 export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isloading , setIsLoading] = useState<boolean>(false)
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email || !message) {
+   
+
+    try {
+
+       if (!email || !message) {
+
       return toast.error("Please fill all fields");
     }
 
-    try {
       const response = await fetch("/api/Contact", {
         method: "POST",
         headers: {
@@ -25,6 +32,7 @@ export default function ContactPage() {
         },
         body: JSON.stringify({ email, message }),
       });
+
 
       const res = await response.json();
 
@@ -35,9 +43,11 @@ export default function ContactPage() {
       toast.success(res.msg || "Message sent successfully");
       setEmail("");
       setMessage("");
+      setIsLoading(false);
     } catch (error) {
       console.error("Contact error:", error);
       toast.error("Error sending message");
+      setIsLoading(false);
     }
   };
 
@@ -60,7 +70,7 @@ export default function ContactPage() {
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="e.g: Some@gmail.com"
+                placeholder="e.g: berojgari@gmail.com"
                 type="email"
                 className="bg-transparent border-b text-white border-white outline-none"
                 required
@@ -83,9 +93,9 @@ export default function ContactPage() {
             <div className="lg:w-sm pt-8 flex items-center justify-center">
               <button
                 type="submit"
-                className="text-center bg-red-500 lg:w-full w-48 hover:cursor-pointer hover:scale-105 transition-transform rounded-md p-2 text-white"
+                className="text-center bg-red-500 lg:w-full w-48 hover:cursor-pointer hover:scale-105 transition-transform rounded-md p-2 flex justify-center text-white"
               >
-                Send Message
+                {isloading ? <Circleloader/> : <p>Send Message</p>}
               </button>
             </div>
           </form>
