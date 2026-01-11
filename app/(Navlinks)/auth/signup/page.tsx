@@ -138,9 +138,18 @@ export default function SignupPage() {
           <button
             type="submit"
           onClick={()=> setIsSigneUp(true)}
-            className="bg-red-500 text-white flex justify-center hover:cursor-pointer rounded-md p-3 mt-4 hover:scale-105 transition-transform"
+            className="bg-red-500 hover:bg-red-600 text-white flex justify-center hover:cursor-pointer rounded-md p-3 mt-4  transition-transform"
           >
             {issignedup ? <Circleloader/> : <p className="py-1">Create Account</p>}
+          </button>
+
+          
+        </form>
+
+        <button 
+          onClick={()=> router.push("/api/Google")}
+          className="text-white bg-red-500 hover:cursor-pointer hover:bg-red-600 rounded-md p-3 mt-2  flex justify-center">
+            Continue with Google
           </button>
 
           {/* FOOTER LINK */}
@@ -153,7 +162,6 @@ export default function SignupPage() {
               Login
             </span>
           </p>
-        </form>
       </section>
     </main>
   );

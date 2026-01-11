@@ -11,6 +11,7 @@
   "dependencies": {
     "@madzadev/image-slider": "^2.0.1",
     "@react-aria/slider": "^3.8.3",
+    "arctic": "^3.7.0",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.8.0",
     "framer-motion": "^12.23.26",
