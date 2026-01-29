@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import Navbar from "@/app/components/Navbar";
 import Circleloader from "@/Loaders/Circleloader";
 
 export default function LoginPage() {
@@ -25,7 +24,7 @@ export default function LoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username , email , password }),
       });
 
       const res = await response.json();
