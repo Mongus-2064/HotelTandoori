@@ -15,26 +15,37 @@ import {
 import Mobilemenu from "./Hamburgermenu"
 import { usePathname, useRouter } from "next/navigation"
 import { toast } from "react-toastify"
+import { signOut, useSession } from "next-auth/react"
 
 export default function Navbar() {
   const [isopen, setIsOpen] = useState(false)
   const pathname = usePathname()
   const [showusername, setShowUserName] = useState<string>("")
+  const [googleusername, setGoogleUserName] = useState<string>("");
+
+  const [username, setUsername] = useState<string>("");
+  const { data: session } = useSession();
   const router = useRouter()
 
-  const handlelogout = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
-    setShowUserName("")
-    toast.success("Logged out")
-    router.push("/")
-  }
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token")
-    const username = localStorage.getItem("username")
-    if (token && username) setShowUserName(username)
-  }, [pathname])
+    const localusername = localStorage.getItem("username");
+   
+    if(token && localusername){
+    setUsername(localusername);
+    }
+    else if (session?.user?.name)
+    {
+      setUsername(session.user.name);
+    }
+
+   
+
+
+    console.log("Session data:", session);
+  }, [pathname , session])
 
   const navlinks = [
     { label: "Home", href: "/", id: "1", icon: Home },
@@ -46,9 +57,8 @@ export default function Navbar() {
 
   return (
     <main
-      className={`${
-        pathname === "/cart" ? "bg-black" : "bg-black/80"
-      } fixed z-50 w-full border-b border-white backdrop-blur-lg`}
+      className={`${pathname === "/cart" ? "bg-black" : "bg-black/80"
+        } fixed z-50 w-full border-b border-white backdrop-blur-lg`}
     >
       {/* TOP BAR */}
       <section className="flex items-center justify-between w-full px-4 lg:px-8 h-20">
@@ -74,13 +84,13 @@ export default function Navbar() {
         {/* RIGHT SIDE (AUTH / HAMBURGER) */}
         <div className="flex items-center gap-4">
           {/* DESKTOP AUTH */}
-          {showusername ? (
+          {username ? (
             <div className="hidden lg:flex items-center gap-3">
               <p className="bg-gray-800 px-6 py-2 text-white rounded-2xl text-sm">
-                Hello {showusername}
+                Hello {username}
               </p>
               <button
-                onClick={handlelogout}
+                onClick={()=> signOut({callbackUrl:"/"})}
                 className="px-6 py-2 rounded-md bg-red-500 text-white hover:bg-red-600"
               >
                 Logout
@@ -94,6 +104,11 @@ export default function Navbar() {
               >
                 Login
               </Link>
+
+
+
+
+
               <Link
                 href="/auth/signup"
                 className="border border-red-500 bg-red-600 px-6 py-2 text-white rounded-md hover:bg-transparent hover:text-red-500 transition"
@@ -102,6 +117,10 @@ export default function Navbar() {
               </Link>
             </div>
           )}
+
+          
+
+
 
           {/* HAMBURGER */}
           <button

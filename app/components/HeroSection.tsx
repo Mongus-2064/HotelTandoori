@@ -58,11 +58,11 @@ export default function HeroSection() {
 
           {/* Buttons */}
           <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:justify-center">
-            <button className="flex items-center justify-center gap-2 rounded-md bg-red-500 px-6 py-3 text-white transition hover:scale-105">
+            <button className="flex items-center justify-center gap-2 rounded-md bg-red-500 px-6 hover:cursor-pointer py-3 text-white transition hover:scale-105">
               Order Now <ArrowRight />
             </button>
 
-            <button className="rounded-md border border-white bg-gray-500/20 px-6 py-3 text-white transition hover:bg-white hover:text-black">
+            <button className="rounded-md border hover:cursor-pointer border-white bg-gray-500/20 px-6 py-3 text-white transition hover:bg-white hover:text-black">
               View Menu
             </button>
           </div>

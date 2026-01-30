@@ -19,15 +19,18 @@ export default function Cart() {
   const [successfull , setSuccessfull] = useState<boolean>(false)
 
 
-    
-
-
-
-
   return (
     <main className='pt-20 min-h-screen w-full flex px-4 gap-8 lg:px-8 lg:flex-row flex-col  '>
       <section className='w-full  '>
         <p className='font-bold text-center text-[40px]'>Your Orders</p>
+
+        {items.length === 0 && (
+          <div className='min-h-screen flex justify-center pt-10'>
+          <p>No orders till Now</p>
+
+          </div>
+        ) } 
+
         <div className=' flex gap-5 flex-col '>
           {
             items.map((item) => (

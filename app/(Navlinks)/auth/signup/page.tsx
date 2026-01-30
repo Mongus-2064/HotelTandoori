@@ -5,10 +5,14 @@ import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Circleloader from "@/Loaders/Circleloader";
+import {signIn} from "next-auth/react"
+
 
 export default function SignupPage() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+
+
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -19,6 +23,7 @@ export default function SignupPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSigneUp(true)
 
     if (password !== confirmPassword) {
       setIsSigneUp(false);
@@ -137,7 +142,6 @@ export default function SignupPage() {
           {/* BUTTON */}
           <button
             type="submit"
-          onClick={()=> setIsSigneUp(true)}
             className="bg-red-500 hover:bg-red-600 text-white flex justify-center hover:cursor-pointer rounded-md p-3 mt-4  transition-transform"
           >
             {issignedup ? <Circleloader/> : <p className="py-1">Create Account</p>}
@@ -147,14 +151,14 @@ export default function SignupPage() {
         </form>
 
         <button 
-          onClick={()=> router.push("/api/Google")}
+        onClick={()=>signIn("google" ,{callbackUrl: "/"} )} 
           className="text-white bg-red-500 hover:cursor-pointer hover:bg-red-600 rounded-md p-3 mt-2  flex justify-center">
             Continue with Google
           </button>
 
           {/* FOOTER LINK */}
           <p className="text-gray-300 text-sm text-center">
-            Already have an account?{" "}
+            Already have an account?
             <span
               className="text-red-500 cursor-pointer hover:underline"
               onClick={() => router.push("/auth/login")}
